@@ -31,11 +31,12 @@ export const normalize = <Value>(
 ): NormalizedValue<Value> => {
 	const type = config.getTypePath(config.path);
 	if (!type) {
-		throw new Error(
-			`No type for path: ${config.path.join(
-				".",
-			)}. Did you register the Custom Type model?`,
-		);
+		return config.value as NormalizedValue<Value>;
+		// throw new Error(
+		// 	`No type for path: ${config.path.join(
+		// 		".",
+		// 	)}. Did you register the Custom Type model?`,
+		// );
 	}
 
 	switch (type.type) {
