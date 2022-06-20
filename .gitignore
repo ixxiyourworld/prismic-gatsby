@@ -1,5 +1,5 @@
 # custom
-dist
+# dist
 examples/**/package-lock.json
 
 # os
