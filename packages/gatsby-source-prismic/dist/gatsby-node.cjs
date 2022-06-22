@@ -120,10 +120,7 @@ const buildDateFieldConfig = () => RTE__namespace.right({
   extensions: { dateformat: {} }
 });
 
-const buildEmbedFieldConfig = () => _function.pipe(RTE__namespace.ask(), RTE__namespace.map((deps) => ({
-  type: deps.nodeHelpers.createTypeName("EmbedType"),
-  extensions: { link: {} }
-})));
+const buildEmbedFieldConfig = () => _function.pipe(RTE__namespace.ask(), RTE__namespace.map((deps) => deps.nodeHelpers.createTypeName("EmbedType")));
 
 const buildGeoPointFieldConfig = () => _function.pipe(RTE__namespace.ask(), RTE__namespace.map((deps) => deps.globalNodeHelpers.createTypeName("GeoPointType")));
 

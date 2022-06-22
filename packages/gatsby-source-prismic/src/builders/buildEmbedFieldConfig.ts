@@ -20,8 +20,5 @@ import { Dependencies, FieldConfigCreator } from "../types";
 export const buildEmbedFieldConfig: FieldConfigCreator = () =>
 	pipe(
 		RTE.ask<Dependencies>(),
-		RTE.map((deps) => ({
-			type: deps.nodeHelpers.createTypeName("EmbedType"),
-			extensions: { link: {} },
-		})),
+		RTE.map((deps) => deps.nodeHelpers.createTypeName("EmbedType")),
 	);
