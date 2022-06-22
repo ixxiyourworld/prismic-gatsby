@@ -389,7 +389,7 @@ export const normalizeDocumentSubtree = (
 							// `buildEmbedFieldConfig`.
 							createNodeOfType({ ...scope.value, id: scope.id }, "EmbedType"),
 						),
-						RTE.map((node) => node.id),
+						RTE.map((node) => node),
 						RTE.orElseW(() => RTE.right(null)),
 					);
 				}
