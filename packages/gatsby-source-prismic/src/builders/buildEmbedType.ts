@@ -1,6 +1,6 @@
 import * as gatsby from "gatsby";
 import * as RTE from "fp-ts/ReaderTaskEither";
-import { pipe } from "fp-ts/function";
+import { pipe, identity } from "fp-ts/function";
 
 import { buildObjectType } from "../lib/buildObjectType";
 
@@ -33,6 +33,7 @@ export const buildEmbedType: RTE.ReaderTaskEither<
 				thumbnail_url: "String",
 				thumbnail_width: "Int",
 				thumbnail_height: "Int",
+				raw: { type: "JSON", resolve: identity },
 			},
 			extensions: { infer: true },
 		});
