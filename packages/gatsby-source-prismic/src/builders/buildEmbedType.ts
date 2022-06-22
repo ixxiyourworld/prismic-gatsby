@@ -17,8 +17,10 @@ export const buildEmbedType: RTE.ReaderTaskEither<
 	gatsby.GatsbyGraphQLType
 > = pipe(
 	RTE.ask<Dependencies>(),
-	RTE.chain((deps) =>
-		buildObjectType({
+	RTE.chain((deps) => {
+		console.log('embed type');
+
+		return buildObjectType({
 			name: deps.nodeHelpers.createTypeName("EmbedType"),
 			interfaces: ["Node"],
 			fields: {
@@ -33,6 +35,6 @@ export const buildEmbedType: RTE.ReaderTaskEither<
 				thumbnail_height: "Int",
 			},
 			extensions: { infer: true },
-		}),
-	),
+		});
+	}),
 );

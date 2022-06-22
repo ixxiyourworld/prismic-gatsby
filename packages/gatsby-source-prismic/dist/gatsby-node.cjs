@@ -514,22 +514,25 @@ const buildAlternateLanguageType = _function.pipe(RTE__namespace.ask(), RTE__nam
   }
 })));
 
-const buildEmbedType = _function.pipe(RTE__namespace.ask(), RTE__namespace.chain((deps) => buildObjectType({
-  name: deps.nodeHelpers.createTypeName("EmbedType"),
-  interfaces: ["Node"],
-  fields: {
-    id: "ID",
-    title: "String",
-    description: "String",
-    width: "Int",
-    height: "Int",
-    html: "String",
-    thumbnail_url: "String",
-    thumbnail_width: "Int",
-    thumbnail_height: "Int"
-  },
-  extensions: { infer: true }
-})));
+const buildEmbedType = _function.pipe(RTE__namespace.ask(), RTE__namespace.chain((deps) => {
+  console.log("embed type");
+  return buildObjectType({
+    name: deps.nodeHelpers.createTypeName("EmbedType"),
+    interfaces: ["Node"],
+    fields: {
+      id: "ID",
+      title: "String",
+      description: "String",
+      width: "Int",
+      height: "Int",
+      html: "String",
+      thumbnail_url: "String",
+      thumbnail_width: "Int",
+      thumbnail_height: "Int"
+    },
+    extensions: { infer: true }
+  });
+}));
 
 const buildGeoPointType = _function.pipe(RTE__namespace.ask(), RTE__namespace.chain((deps) => buildObjectType({
   name: deps.globalNodeHelpers.createTypeName("GeoPointType"),
