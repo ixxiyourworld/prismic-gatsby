@@ -20,6 +20,7 @@ export const buildEmbedType: RTE.ReaderTaskEither<
 	RTE.chain((deps) =>
 		buildObjectType({
 			name: deps.nodeHelpers.createTypeName("EmbedType"),
+			interfaces: ["Node"],
 			fields: {
 				id: "ID",
 				title: "String",
@@ -31,6 +32,7 @@ export const buildEmbedType: RTE.ReaderTaskEither<
 				thumbnail_width: "Int",
 				thumbnail_height: "Int",
 			},
+			extensions: { infer: true },
 		}),
 	),
 );

@@ -519,6 +519,7 @@ const buildAlternateLanguageType = _function.pipe(RTE__namespace.ask(), RTE__nam
 
 const buildEmbedType = _function.pipe(RTE__namespace.ask(), RTE__namespace.chain((deps) => buildObjectType({
   name: deps.nodeHelpers.createTypeName("EmbedType"),
+  interfaces: ["Node"],
   fields: {
     id: "ID",
     title: "String",
@@ -529,7 +530,8 @@ const buildEmbedType = _function.pipe(RTE__namespace.ask(), RTE__namespace.chain
     thumbnail_url: "String",
     thumbnail_width: "Int",
     thumbnail_height: "Int"
-  }
+  },
+  extensions: { infer: true }
 })));
 
 const buildGeoPointType = _function.pipe(RTE__namespace.ask(), RTE__namespace.chain((deps) => buildObjectType({
