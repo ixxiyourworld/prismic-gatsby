@@ -2,7 +2,7 @@ import * as gatsby from "gatsby";
 import * as RTE from "fp-ts/ReaderTaskEither";
 import { pipe } from "fp-ts/function";
 
-import { buildNamedInferredNodeType } from "../lib/buildNamedInferredNodeType";
+import { buildObjectType } from "../lib/buildObjectType";
 
 import { Dependencies } from "../types";
 
@@ -16,8 +16,21 @@ export const buildEmbedType: RTE.ReaderTaskEither<
 	never,
 	gatsby.GatsbyGraphQLType
 > = pipe(
-	RTE.asks((deps: Dependencies) =>
-		deps.nodeHelpers.createTypeName("EmbedType"),
+	RTE.ask<Dependencies>(),
+	RTE.chain((deps) =>
+		buildObjectType({
+			name: deps.nodeHelpers.createTypeName("EmbedType"),
+			fields: {
+				id: "ID",
+				title: "String",
+				description: "String",
+				width: "Int",
+				height: "Int",
+				html: "String",
+				thumbnail_url: "String",
+				thumbnail_width: "Int",
+				thumbnail_height: "Int",
+			},
+		}),
 	),
-	RTE.chain(buildNamedInferredNodeType),
 );
