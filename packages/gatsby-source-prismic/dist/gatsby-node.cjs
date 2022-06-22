@@ -528,7 +528,8 @@ const buildEmbedType = _function.pipe(RTE__namespace.ask(), RTE__namespace.chain
       html: "String",
       thumbnail_url: "String",
       thumbnail_width: "Int",
-      thumbnail_height: "Int"
+      thumbnail_height: "Int",
+      raw: { type: "JSON", resolve: _function.identity }
     },
     extensions: { infer: true }
   });
